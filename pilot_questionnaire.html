@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="it" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Experience Questionnaire</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism styling */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #818cf8;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+            outline: none;
+        }
+
+        /* Custom likert radio option styling */
+        .likert-btn {
+            transition: all 0.25s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .likert-btn:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: rgba(129, 140, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .likert-btn.active {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border-color: #a5b4fc;
+            box-shadow: 0 0 18px rgba(99, 102, 241, 0.5);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Smooth step panel transitions */
+        .step-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .step-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ambient gradient blobs */
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen relative flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Background Animated Blobs -->
+    <div class="fixed pointer-events-none z-0 blob-1 rounded-full animate-pulse-slow"></div>
+    <div class="fixed pointer-events-none z-0 blob-2 rounded-full animate-pulse-slow" style="animation-delay: 3s;">
+    </div>
+
+    <header class="sticky top-0 z-40 glass-nav px-4 lg:px-8 py-3.5">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div
+                    class="h-9 w-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm sm:text-base text-white tracking-wide">Ricerca sulla Brand Experience
+                    </h1>
+                    <p class="text-xs text-slate-400 font-medium flex items-center gap-1.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Studio Accademico</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-4xl mx-auto px-4 py-8 sm:py-12 w-full flex-grow">
+
+        <!-- Progress Indicator Bar -->
+        <div id="progress-container" class="mb-8 glass-card rounded-2xl p-4 sm:p-5">
+            <div class="flex justify-between items-center text-xs sm:text-sm font-semibold mb-2">
+                <span class="text-indigo-300 flex items-center gap-2">
+                    <span id="step-counter-text">Inizio</span>
+                    <span class="text-slate-500">•</span>
+                    <span id="step-title-text">Introduzione & Brand</span>
+                </span>
+                <span id="progress-percent" class="text-white font-bold">0%</span>
+            </div>
+            <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden p-0.5 border border-white/5">
+                <div id="progress-bar"
+                    class="bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-400 h-full rounded-full transition-all duration-500 ease-out"
+                    style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Notification Toast Container -->
+        <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+        <!-- FORM CONTAINER -->
+        <form id="survey-form" onsubmit="handleFormSubmit(event)" class="relative">
+
+            <!-- STEP 0: INTRO & BRAND CHOICE -->
+            <div id="step-0" class="step-panel active glass-card rounded-3xl p-6 sm:p-10">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-6">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Studio Accademico sulla Brand Experience
+                </div>
+
+                <h2 id="intro-title" class="text-2xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
+                    Pensa a un Brand
+                </h2>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                    Il tuo preferito, il primo che ti viene in mente. Quello che ti trovi ad usare più spesso, con cui
+                    hai ricordi piacevoli o che vorresti dimenticare. Un marchio familiare, con cui hai avuto la
+                    fortuna, o la sfortuna, di incontrarti. Pensa alle tue sensazioni, i tuoi pensieri durante
+                    l'interazione con il brand e i suoi prodotti.
+                </p>
+
+                <p
+                    class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 bg-slate-900/40 p-4 rounded-xl border border-white/5">
+                    Nei paragrafi successivi ti faremo delle domande, chiuse e aperte, per approfondire queste
+                    esperienze. Rispondi liberamente cercando di spiegarci nel dettaglio cosa hai sentito, come e
+                    perché.
+                </p>
+
+                <div class="space-y-3">
+                    <label for="brand_name" class="block text-sm font-bold text-white tracking-wide">
+                        Specifica il Brand che intendi valutare <span class="text-rose-400">*</span>
+                    </label>
+                    <input type="text" id="brand_name" name="brand_name" required
+                        placeholder="Es. Apple, Nike, Amazon, Ferrari, IKEA..."
+                        class="w-full glass-input px-5 py-4 rounded-xl text-base sm:text-lg focus:ring-2 focus:ring-indigo-500 placeholder-slate-500">
+                    <p class="text-xs text-slate-400">Inserisci il nome del marchio a cui farai riferimento per tutte le
+                        risposte successive.</p>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <button type="button" onclick="nextStep()"
+                        class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <span>Inizia il Questionario</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DYNAMIC QUESTION STEPS WILL BE GENERATED HERE BY JAVASCRIPT -->
+            <div id="dynamic-steps-container"></div>
+
+            <!-- STEP FINAL: REVIEW & SUBMIT -->
+            <div id="step-final" class="step-panel glass-card rounded-3xl p-6 sm:p-10">
+                <div class="text-center max-w-xl mx-auto space-y-4">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Hai completato tutte le sezioni!</h2>
+                    <p class="text-slate-300 text-sm">
+                        Verifica di aver risposto a tutte le domande. Cliccando su "Invia Risposte", le tue valutazioni
+                        verranno registrate in modo totalmente anonimo.
+                    </p>
+
+                    <div id="summary-box"
+                        class="text-left bg-slate-900/60 rounded-2xl p-5 border border-white/10 space-y-3 my-6">
+                        <div class="text-xs uppercase font-bold text-indigo-400 tracking-wider">Riepilogo Scheda</div>
+                        <div class="flex justify-between text-sm py-1 border-b border-white/5">
+                            <span class="text-slate-400">Brand Valutato:</span>
+                            <span id="summary-brand" class="text-white font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between text-sm py-1">
+                            <span class="text-slate-400">Stato Risposte:</span>
+                            <span id="summary-status" class="text-emerald-400 font-semibold">100% Compilato</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                        <button type="button" onclick="prevStep()"
+                            class="px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-semibold text-sm border border-white/10 transition cursor-pointer">
+                            Torna Indietro
+                        </button>
+                        <button type="submit" id="submit-btn"
+                            class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2 cursor-pointer">
+                            <span>Invia Risposte Definitive</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUCCESS SCREEN -->
+            <div id="step-success" class="step-panel glass-card rounded-3xl p-8 sm:p-12 text-center">
+                <div
+                    class="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-extrabold text-white mb-3">Grazie per il tuo contributo!</h2>
+                <p class="text-slate-300 max-w-lg mx-auto text-sm sm:text-base mb-8">
+                    Le tue risposte sono state registrate con successo e contribuiranno in modo fondamentale alla
+                    ricerca sulla percezione della Brand Experience.
+                </p>
+                <div class="pt-2">
+                    <button type="button" onclick="resetForm()"
+                        class="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition cursor-pointer">
+                        Compila per un altro Brand
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-white/5 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-5xl mx-auto px-4 flex justify-center items-center">
+            <p>© 2026 Brand Experience Research Lab. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        const SURVEY_A = {
+            id: 'A',
+            badge: 'Studio Accademico',
+            title: "Valutazione dell'Esperienza del Brand",
+            actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc8xTBlBHPT43QIZRlX5AMqwZF5lyXTB2yy3c1b8s5EcdIkWA/formResponse',
+            brandEntryId: 'entry.1789372600',
+            steps: [
+                {
+                    dimension: 'Esperienza Sensoriale',
+                    items: [
+                        { id: 'q_sensory_1', entryId: 'entry.1361963309', type: 'likert', text: 'Questo brand suscita una forte impressione sui miei sensi.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_sensory_1_open', entryId: 'entry.830017909', type: 'open', text: 'Quali elementi specifici (visivi, uditivi, tattili, ecc.) contribuiscono a questa impressione sensoriale?' },
+                        { id: 'q_sensory_2', entryId: 'entry.1652361840', type: 'likert', text: 'Trovo questo brand interessante dal punto di vista sensoriale.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_sensory_2_open', entryId: 'entry.1689541799', type: 'open', text: 'Cosa rende questo brand sensorialmente stimolante o unico per te?' },
+                        { id: 'q_sensory_3', entryId: 'entry.1808460767', type: 'likert', text: 'Questo brand non stimola i miei sensi.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_sensory_3_open', entryId: 'entry.93797760', type: 'open', text: 'Perché ritieni che questo brand non sia stimolante dal punto di vista sensoriale?' }
+                    ]
+                },
+                {
+                    dimension: 'Esperienza Affettiva ed Emozionale',
+                    items: [
+                        { id: 'q_affective_1', entryId: 'entry.1881718847', type: 'likert', text: 'Questo brand suscita in me sentimenti ed emozioni.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_affective_1_open', entryId: 'entry.1666052944', type: 'open', text: 'Quali emozioni specifiche provi quando interagisci con questo brand?' },
+                        { id: 'q_affective_2', entryId: 'entry.1548704879', type: 'likert', text: 'Non provo forti emozioni per questo brand.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_affective_2_open', entryId: 'entry.730024869', type: 'open', text: 'Cosa pensi manchi a questo brand per evocare una connessione emotiva più forte?' },
+                        { id: 'q_affective_3', entryId: 'entry.1639414160', type: 'likert', text: 'Questo brand è un brand emotivo.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_affective_3_open', entryId: 'entry.1453395596', type: 'open', text: 'In che modo definiresti la personalità emotiva di questo brand?' }
+                    ]
+                },
+                {
+                    dimension: 'Esperienza Comportamentale e Fisica',
+                    items: [
+                        { id: 'q_behavioral_1', entryId: 'entry.3833876', type: 'likert', text: 'Metto in atto azioni e comportamenti fisici quando uso questo brand.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_behavioral_1_open', entryId: 'entry.1837956533', type: 'open', text: 'Quali azioni o comportamenti specifici attivi quando utilizzi questo brand?' },
+                        { id: 'q_behavioral_2', entryId: 'entry.1574290924', type: 'likert', text: 'Questo brand comporta esperienze fisiche/corporee.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_behavioral_2_open', entryId: 'entry.513967846', type: 'open', text: "Come descriveresti l'impatto fisico di questo brand sulla tua esperienza?" },
+                        { id: 'q_behavioral_3', entryId: 'entry.2028017829', type: 'likert', text: "Questo brand non è orientato all'azione.", minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_behavioral_3_open', entryId: 'entry.925935482', type: 'open', text: "Perché percepisci questo brand come passivo o non orientato all'azione?" }
+                    ]
+                },
+                {
+                    dimension: 'Esperienza Intellettuale e Cognitiva',
+                    items: [
+                        { id: 'q_intellectual_1', entryId: 'entry.249124498', type: 'likert', text: 'Dedico molto pensiero quando incontro questo brand.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_intellectual_1_open', entryId: 'entry.1564521746', type: 'open', text: 'Quali sono i pensieri o i processi di ragionamento che attivi quando entri in contatto con il brand?' },
+                        { id: 'q_intellectual_2', entryId: 'entry.683413743', type: 'likert', text: 'Questo brand non mi fa riflettere.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_intellectual_2_open', entryId: 'entry.2005675994', type: 'open', text: 'Cosa impedisce a questo brand di stimolare la tua riflessione o il tuo interesse intellettuale?' },
+                        { id: 'q_intellectual_3', entryId: 'entry.446415555', type: 'likert', text: 'Questo brand stimola la mia curiosità e la mia capacità di risoluzione di problemi.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
+                        { id: 'q_intellectual_3_open', entryId: 'entry.1464639276', type: 'open', text: 'In che modo il brand ti incoraggia a esplorare o risolvere problemi?' }
+                    ]
+                },
+                {
+                    dimension: 'Note e Suggerimenti Finali',
+                    items: [
+                        { id: 'q_suggestions', entryId: 'entry.1584748032', type: 'open', text: 'Hai consigli, commenti o osservazioni finali da condividere in merito alla compilazione di questo questionario?' }
+                    ]
+                }
+            ]
+        };
+
+        const SURVEY_B = {
+            id: 'B',
+            badge: 'Studio Accademico',
+            title: "Valutazione dell'Esperienza del Brand",
+            actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeq7nHIOX2sdAJTnHTGtHLTaab3GcMPM-kq3_arKDd3KkSIJQ/formResponse',
+            brandEntryId: 'entry.887139560',
+            steps: [
+                {
+                    dimension: 'Esperienza Sensoriale',
+                    items: [
+                        { id: 'b_sensory_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza sensoriale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
+                        { id: 'b_sensory_1', entryId: 'entry.258881963', type: 'likert', text: 'Questo brand suscita una forte impressione sui miei sensi.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_sensory_2', entryId: 'entry.264609937', type: 'likert', text: 'Trovo questo brand interessante dal punto di vista sensoriale.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_sensory_3', entryId: 'entry.561885121', type: 'likert', text: 'Questo brand non stimola i miei sensi.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_sensory_open', entryId: 'entry.1650938434', type: 'open', text: "Raccontaci la tua esperienza sensoriale: descrivi come il design, i colori, i suoni o gli aspetti estetici del brand hanno influenzato le tue percezioni fisiche durante l'interazione." }
+                    ]
+                },
+                {
+                    dimension: 'Esperienza Affettiva',
+                    items: [
+                        { id: 'b_affective_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza affettiva con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
+                        { id: 'b_affective_1', entryId: 'entry.1230672961', type: 'likert', text: 'Questo brand suscita in me sentimenti ed emozioni.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_affective_2', entryId: 'entry.1677398339', type: 'likert', text: 'Non provo forti emozioni per questo brand.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_affective_3', entryId: 'entry.676730096', type: 'likert', text: 'Questo brand è un brand emotivo.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_affective_open', entryId: 'entry.896234847', type: 'open', text: "Raccontaci la tua esperienza affettiva: quali sentimenti, stati d'animo o emozioni specifiche associ a questo brand e come ti fanno sentire quando interagisci con esso?" }
+                    ]
+                },
+                {
+                    dimension: 'Esperienza Intellettuale',
+                    items: [
+                        { id: 'b_intellectual_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza intellettuale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
+                        { id: 'b_intellectual_1', entryId: 'entry.1121107633', type: 'likert', text: 'Dedico molto pensiero quando incontro questo brand.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_intellectual_2', entryId: 'entry.756061343', type: 'likert', text: 'Questo brand non mi fa riflettere.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_intellectual_3', entryId: 'entry.169116537', type: 'likert', text: 'Questo brand stimola la mia curiosità e la mia capacità di risoluzione dei problemi.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_intellectual_open', entryId: 'entry.1765560703', type: 'open', text: 'Raccontaci la tua esperienza intellettuale: in che modo questo brand stimola la tua riflessione, la tua curiosità o ti spinge ad analizzare le cose in modo nuovo o creativo?' }
+                    ]
+                },
+                {
+                    dimension: 'Esperienza Comportamentale',
+                    items: [
+                        { id: 'b_behavioral_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza comportamentale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
+                        { id: 'b_behavioral_1', entryId: 'entry.312633751', type: 'likert', text: 'Metto in atto azioni e comportamenti fisici quando uso questo brand.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_behavioral_2', entryId: 'entry.479464757', type: 'likert', text: 'Questo brand comporta esperienze fisiche/corporee.', minLabel: "1", maxLabel: "7" },
+                        { id: 'b_behavioral_3', entryId: 'entry.1072484294', type: 'likert', text: "Questo brand non è orientato all'azione.", minLabel: "1", maxLabel: "7" },
+                        { id: 'b_behavioral_open', entryId: 'entry.287687031', type: 'open', text: 'Raccontaci la tua esperienza comportamentale: quali azioni fisiche, attività o modi di interagire concretamente ti spinge a compiere questo brand nella tua quotidianità?' }
+                    ]
+                },
+                {
+                    dimension: 'Note e Suggerimenti Finali',
+                    items: [
+                        { id: 'b_suggestions', entryId: 'entry.1428153006', type: 'open', text: 'Hai consigli, commenti o osservazioni finali da condividere in merito alla compilazione di questo questionario?' }
+                    ]
+                }
+            ]
+        };
+
+        let currentSurvey = null;
+        let currentStepIndex = 0;
+        let totalSteps = 0;
+        let formDataStore = {};
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+
+            let bgClasses = 'bg-slate-900 border-indigo-500/40 text-indigo-200';
+            if (type === 'error') bgClasses = 'bg-rose-950/90 border-rose-500/50 text-rose-200';
+            if (type === 'warning') bgClasses = 'bg-amber-950/90 border-amber-500/50 text-amber-200';
+            if (type === 'success') bgClasses = 'bg-emerald-950/90 border-emerald-500/50 text-emerald-200';
+
+            toast.className = `px-4 py-3 rounded-xl border ${bgClasses} text-xs font-semibold shadow-xl backdrop-blur-md flex items-center gap-2 pointer-events-auto transition-all duration-300 transform translate-y-2 opacity-0`;
+            toast.innerHTML = `<span>${message}</span>`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initSurvey();
+        });
+
+        function initSurvey() {
+            formDataStore = {};
+            currentStepIndex = 0;
+
+            // Random allocation 50/50 per A/B Testing anonimo
+            const storedVersion = sessionStorage.getItem('assigned_survey');
+            if (storedVersion) {
+                currentSurvey = storedVersion === 'A' ? SURVEY_A : SURVEY_B;
+            } else {
+                const isA = Math.random() < 0.5;
+                currentSurvey = isA ? SURVEY_A : SURVEY_B;
+                sessionStorage.setItem('assigned_survey', currentSurvey.id);
+            }
+
+            renderSteps();
+
+            totalSteps = currentSurvey.steps.length + 2; // Step 0 (Intro), Steps 1..N, Step Final
+            updateProgressBar();
+            showStep(0);
+        }
+
+        function renderSteps() {
+            const container = document.getElementById('dynamic-steps-container');
+            container.innerHTML = '';
+
+            currentSurvey.steps.forEach((stepData, index) => {
+                const stepNumber = index + 1;
+                const stepEl = document.createElement('div');
+                stepEl.id = `step-${stepNumber}`;
+                stepEl.className = 'step-panel glass-card rounded-3xl p-6 sm:p-10 space-y-8';
+
+                let itemsHTML = `
+                    <div class="border-b border-white/10 pb-4">
+                        <div class="text-xs uppercase font-bold text-indigo-400 tracking-wider">Sezione ${stepNumber} di ${currentSurvey.steps.length}</div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">${stepData.dimension}</h3>
+                    </div>
+                `;
+
+                stepData.items.forEach((item) => {
+                    if (item.type === 'group_header') {
+                        itemsHTML += `
+                            <div class="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs sm:text-sm font-semibold text-indigo-200">
+                                ${item.text}
+                            </div>
+                        `;
+                    } else if (item.type === 'likert') {
+                        itemsHTML += `
+                            <div class="space-y-3 bg-slate-900/40 p-4 sm:p-5 rounded-2xl border border-white/5">
+                                <label class="block text-sm sm:text-base font-semibold text-white">
+                                    ${item.text} <span class="text-rose-400">*</span>
+                                </label>
+                                <div class="flex items-center justify-between text-[11px] text-slate-400 font-medium px-1">
+                                    <span>${item.minLabel || '1'}</span>
+                                    <span>${item.maxLabel || '7'}</span>
+                                </div>
+                                <div class="grid grid-cols-7 gap-1.5 sm:gap-3 pt-1">
+                                    ${[1, 2, 3, 4, 5, 6, 7].map(num => `
+                                        <button type="button" 
+                                                onclick="selectLikert('${item.id}', ${num}, this)" 
+                                                data-id="${item.id}" 
+                                                data-value="${num}"
+                                                class="likert-btn likert-${item.id} py-3 rounded-xl text-xs sm:text-sm font-bold text-slate-300 cursor-pointer">
+                                            ${num}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                                <input type="hidden" id="${item.id}" name="${item.id}">
+                            </div>
+                        `;
+                    } else if (item.type === 'open') {
+                        itemsHTML += `
+                            <div class="space-y-3 bg-slate-900/40 p-4 sm:p-5 rounded-2xl border border-white/5">
+                                <label for="${item.id}" class="block text-sm sm:text-base font-semibold text-white">
+                                    ${item.text}
+                                </label>
+                                <textarea id="${item.id}" name="${item.id}" rows="3" 
+                                          placeholder="Scrivi qui la tua risposta dettagliata..." 
+                                          class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
+                            </div>
+                        `;
+                    }
+                });
+
+                itemsHTML += `
+                    <div class="pt-6 border-t border-white/10 flex justify-between items-center">
+                        <button type="button" onclick="prevStep()" class="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-semibold text-xs sm:text-sm border border-white/10 transition cursor-pointer">
+                            Indietro
+                        </button>
+                        <button type="button" onclick="nextStep()" class="px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-indigo-500/20 transition flex items-center gap-2 cursor-pointer">
+                            <span>Continua</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+                `;
+
+                stepEl.innerHTML = itemsHTML;
+                container.appendChild(stepEl);
+            });
+        }
+
+        function selectLikert(itemId, value, btnEl) {
+            document.querySelectorAll(`.likert-${itemId}`).forEach(btn => btn.classList.remove('active'));
+            btnEl.classList.add('active');
+            const hiddenInput = document.getElementById(itemId);
+            if (hiddenInput) hiddenInput.value = value;
+            formDataStore[itemId] = value;
+        }
+
+        function showStep(index) {
+            document.querySelectorAll('.step-panel').forEach(panel => panel.classList.remove('active'));
+
+            let targetId = `step-${index}`;
+            if (index === totalSteps - 1) targetId = 'step-final';
+
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                targetEl.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            currentStepIndex = index;
+            updateProgressBar();
+
+            if (index === totalSteps - 1) {
+                document.getElementById('summary-brand').innerText = document.getElementById('brand_name').value || 'Non specificato';
+            }
+        }
+
+        function validateCurrentStep() {
+            if (currentStepIndex === 0) {
+                const brandInput = document.getElementById('brand_name');
+                if (!brandInput || !brandInput.value.trim()) {
+                    showToast('Specificare il nome del brand prima di proseguire.', 'error');
+                    if (brandInput) brandInput.focus();
+                    return false;
+                }
+            } else if (currentStepIndex > 0 && currentStepIndex <= currentSurvey.steps.length) {
+                const stepData = currentSurvey.steps[currentStepIndex - 1];
+                for (let item of stepData.items) {
+                    if (item.type === 'likert') {
+                        const val = document.getElementById(item.id)?.value;
+                        if (!val) {
+                            showToast('Rispondi a tutte le domande scalari obbligatorie (*)', 'warning');
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+        function nextStep() {
+            if (!validateCurrentStep()) return;
+
+            if (currentStepIndex < totalSteps - 1) {
+                showStep(currentStepIndex + 1);
+            }
+        }
+
+        function prevStep() {
+            if (currentStepIndex > 0) {
+                showStep(currentStepIndex - 1);
+            }
+        }
+
+        function updateProgressBar() {
+            const percent = Math.round((currentStepIndex / (totalSteps - 1)) * 100);
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercentText = document.getElementById('progress-percent');
+            const stepCounterText = document.getElementById('step-counter-text');
+            const stepTitleText = document.getElementById('step-title-text');
+
+            if (progressBar) progressBar.style.width = `${percent}%`;
+            if (progressPercentText) progressPercentText.innerText = `${percent}%`;
+
+            if (currentStepIndex === 0) {
+                stepCounterText.innerText = `Inizio`;
+                stepTitleText.innerText = `Introduzione & Brand`;
+            } else if (currentStepIndex <= currentSurvey.steps.length) {
+                stepCounterText.innerText = `Sezione ${currentStepIndex} di ${currentSurvey.steps.length}`;
+                stepTitleText.innerText = currentSurvey.steps[currentStepIndex - 1].dimension;
+            } else if (currentStepIndex === totalSteps - 1) {
+                stepCounterText.innerText = `Completato`;
+                stepTitleText.innerText = `Riepilogo e Invio`;
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Invio in corso...</span>
+                `;
+            }
+
+            const formData = new FormData();
+            const targetGFormUrl = currentSurvey.actionUrl;
+
+            // Brand Name
+            const brandVal = document.getElementById('brand_name').value || '';
+            formData.append(currentSurvey.brandEntryId, brandVal);
+
+            // Mapped entry.ID fields
+            currentSurvey.steps.forEach(stepData => {
+                stepData.items.forEach(item => {
+                    if (item.entryId) {
+                        const inputEl = document.getElementById(item.id);
+                        const val = formDataStore[item.id] || (inputEl ? inputEl.value : '');
+                        if (val !== undefined && val !== null && val !== '') {
+                            formData.append(item.entryId, val);
+                        }
+                    }
+                });
+            });
+
+            // Invio diretto a Google Forms via POST (no-cors)
+            fetch(targetGFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            })
+                .then(() => {
+                    finishSubmission();
+                })
+                .catch(err => {
+                    console.error('Errore durante l\'invio:', err);
+                    showToast('Errore di connessione. Riprova.', 'error');
+
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = `
+                        <span>Invia Risposte Definitive</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    `;
+                    }
+                });
+        }
+
+        function finishSubmission() {
+            document.querySelectorAll('.step-panel').forEach(panel => panel.classList.remove('active'));
+            const successPanel = document.getElementById('step-success');
+            if (successPanel) successPanel.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetForm() {
+            document.getElementById('survey-form').reset();
+            formDataStore = {};
+            document.querySelectorAll('.likert-btn').forEach(btn => btn.classList.remove('active'));
+            sessionStorage.removeItem('assigned_survey');
+            initSurvey();
+        }
+    </script>
+</body>
+
+</html>
