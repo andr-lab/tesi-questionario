@@ -391,7 +391,7 @@
                             id: 'b_sensory_open',
                             entryId: 'entry.1650938434',
                             type: 'open',
-                            minWords: 20,
+                            minWords: 30,
                             text: "Raccontaci la tua esperienza sensoriale: descrivi come il design, i colori, i suoni, il packaging o gli aspetti estetici e fisici del brand hanno influenzato le tue percezioni durante l'interazione.",
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; considera e approfondisci solo gli aspetti sensoriali ed estetici compatibili e pertinenti con il brand che hai scelto."
                         }
@@ -433,7 +433,7 @@
                             id: 'b_affective_open',
                             entryId: 'entry.896234847',
                             type: 'open',
-                            minWords: 20,
+                            minWords: 30,
                             text: "Raccontaci la tua esperienza affettiva: quali sentimenti, stati d'animo o emozioni specifiche associ a questo brand e come ti fanno sentire quando entri in contatto con esso?",
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; focalizzati sulle reazioni emotive o affettive compatibili con la tipologia di brand scelto."
                         }
@@ -475,7 +475,7 @@
                             id: 'b_intellectual_open',
                             entryId: 'entry.1765560703',
                             type: 'open',
-                            minWords: 20,
+                            minWords: 30,
                             text: "Raccontaci la tua esperienza intellettuale: in che modo questo brand stimola la tua riflessione, la tua curiosità, l'apprendimento o ti spinge ad analizzare le cose in modo nuovo o creativo?",
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; considera gli aspetti cognitivi e riflessivi pertinenti al contesto d'uso del marchio scelto."
                         }
@@ -517,7 +517,7 @@
                             id: 'b_behavioral_open',
                             entryId: 'entry.287687031',
                             type: 'open',
-                            minWords: 20,
+                            minWords: 30,
                             text: "Raccontaci la tua esperienza comportamentale: quali azioni fisiche, abitudini, attività o modi di interagire concretamente ti spinge a compiere questo brand nella tua quotidianità?",
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; soffermati sulle azioni fisiche, pratiche o abitudini d'uso compatibili con il brand da te selezionato."
                         }
@@ -713,7 +713,7 @@
                         }
                     } else if (item.type === 'open') {
                         const textarea = document.getElementById(item.id);
-                        const minWords = item.minWords || 20;
+                        const minWords = item.minWords || 30;
                         const text = textarea ? textarea.value.trim() : '';
                         const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
                         if (words < minWords) {
@@ -866,7 +866,7 @@
             document.querySelectorAll('[id^="counter-"]').forEach(counter => {
                 const itemId = counter.id.replace('counter-', '');
                 const itemConfig = SURVEY_CONFIG.steps.flatMap(s => s.items).find(i => i.id === itemId);
-                const minWords = itemConfig?.minWords || 20;
+                const minWords = itemConfig?.minWords || 30;
                 counter.innerText = `0/${minWords} parole`;
                 counter.className = "text-[11px] text-amber-400/90 font-medium select-none";
             });
