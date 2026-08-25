@@ -638,7 +638,7 @@
                                               class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
                                     ${item.minWords ? `
                                         <div class="flex justify-end pt-1.5 px-1">
-                                            <span id="counter-${item.id}" class="text-[11px] text-slate-500 font-normal select-none">
+                                            <span id="counter-${item.id}" class="text-[11px] text-amber-400/90 font-medium select-none">
                                                 0/${item.minWords} parole
                                             </span>
                                         </div>
@@ -709,6 +709,16 @@
                         const val = document.getElementById(item.id)?.value;
                         if (!val) {
                             showToast('Rispondi a tutte le domande scalari obbligatorie (*)', 'warning');
+                            return false;
+                        }
+                    } else if (item.type === 'open') {
+                        const textarea = document.getElementById(item.id);
+                        const minWords = item.minWords || 20;
+                        const text = textarea ? textarea.value.trim() : '';
+                        const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+                        if (words < minWords) {
+                            showToast(`Inserisci almeno ${minWords} parole nella risposta aperta prima di proseguire (${words}/${minWords} inserite).`, 'warning');
+                            if (textarea) textarea.focus();
                             return false;
                         }
                     }
@@ -838,14 +848,14 @@
                 const remaining = Math.max(0, minWords - words);
                 if (remaining > 0) {
                     counter.innerText = `${words}/${minWords} parole`;
-                    counter.className = "text-[11px] text-slate-500 font-normal select-none";
+                    counter.className = "text-[11px] text-amber-400/90 font-medium select-none";
                 } else {
-                    counter.innerText = `${words}/${minWords} parole`;
-                    counter.className = "text-[11px] text-slate-400 font-normal select-none";
+                    counter.innerText = `${words}/${minWords} parole ✓`;
+                    counter.className = "text-[11px] text-emerald-400 font-semibold select-none";
                 }
             } else {
                 counter.innerText = `${words} parole`;
-                counter.className = "text-[11px] text-slate-500 font-normal select-none";
+                counter.className = "text-[11px] text-slate-400 font-normal select-none";
             }
         }
 
@@ -858,7 +868,7 @@
                 const itemConfig = SURVEY_CONFIG.steps.flatMap(s => s.items).find(i => i.id === itemId);
                 const minWords = itemConfig?.minWords || 20;
                 counter.innerText = `0/${minWords} parole`;
-                counter.className = "text-[11px] text-slate-500 font-normal select-none";
+                counter.className = "text-[11px] text-amber-400/90 font-medium select-none";
             });
             initSurvey();
         }
