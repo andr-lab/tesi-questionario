@@ -235,6 +235,10 @@
                 <p
                     class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 bg-slate-900/40 p-4 rounded-xl border border-white/5">
                     Nelle sezioni successive troverai domande chiuse (su scala 1-7) e una domanda aperta per ciascuna dimensione. 
+                </p>
+
+                <p
+                    class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 bg-slate-900/40 p-4 rounded-xl border border-white/5">
                     <strong class="text-slate-200">Nota:</strong> poiché il questionario è formulato in modo generale per adattarsi a brand e settori anche molto diversi tra loro, nelle risposte aperte considera e approfondisci liberamente gli aspetti più compatibili e pertinenti con il brand che hai scelto.
                 </p>
 
@@ -644,7 +648,7 @@
                                     ${item.minWords ? `
                                         <div class="flex justify-end pt-1.5 px-1">
                                             <span id="counter-${item.id}" class="text-[11px] text-slate-500 font-normal select-none">
-                                                0/${item.minWords} parole (ne mancano ${item.minWords})
+                                                0/${item.minWords} parole
                                             </span>
                                         </div>
                                     ` : ''}
