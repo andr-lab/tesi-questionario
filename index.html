@@ -222,7 +222,7 @@
                 </div>
 
                 <h2 id="intro-title" class="text-2xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
-                    Pensa ad un Brand
+                    Pensa a un Brand
                 </h2>
 
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
@@ -234,9 +234,8 @@
 
                 <p
                     class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 bg-slate-900/40 p-4 rounded-xl border border-white/5">
-                    Nei paragrafi successivi ti faremo delle domande, chiuse e aperte, per approfondire queste
-                    esperienze. Rispondi liberamente cercando di spiegarci nel dettaglio cosa hai sentito, come e
-                    perché.
+                    Nelle sezioni successive troverai domande chiuse (su scala 1-7) e una domanda aperta per ciascuna dimensione. 
+                    <strong class="text-slate-200">Nota:</strong> poiché il questionario è formulato in modo generale per adattarsi a brand e settori anche molto diversi tra loro, nelle risposte aperte considera e approfondisci liberamente gli aspetti più compatibili e pertinenti con il brand che hai scelto.
                 </p>
 
                 <div class="space-y-3">
@@ -343,68 +342,7 @@
     </footer>
 
     <script>
-        const SURVEY_A = {
-            id: 'A',
-            badge: 'Studio Accademico',
-            title: "Valutazione dell'Esperienza del Brand",
-            actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSc8xTBlBHPT43QIZRlX5AMqwZF5lyXTB2yy3c1b8s5EcdIkWA/formResponse',
-            brandEntryId: 'entry.1789372600',
-            steps: [
-                {
-                    dimension: 'Esperienza Sensoriale',
-                    items: [
-                        { id: 'q_sensory_1', entryId: 'entry.1361963309', type: 'likert', text: 'Questo brand colpisce fortemente i miei sensi, visivi e non solo.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_sensory_1_open', entryId: 'entry.830017909', type: 'open', text: 'In che modo questo brand colpisce i tuoi sensi (visivi, uditivi, tattili, ecc.)?' },
-                        { id: 'q_sensory_2', entryId: 'entry.1652361840', type: 'likert', text: 'Trovo questo brand stimolante dal punto di vista sensoriale.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_sensory_2_open', entryId: 'entry.1689541799', type: 'open', text: 'Cosa rende questo brand sensorialmente stimolante o unico per te?' },
-                        { id: 'q_sensory_3', entryId: 'entry.1808460767', type: 'likert', text: 'Questo brand non stimola i miei sensi.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_sensory_3_open', entryId: 'entry.93797760', type: 'open', text: 'Perché ritieni che questo brand non sia stimolante dal punto di vista sensoriale?' }
-                    ]
-                },
-                {
-                    dimension: 'Esperienza Affettiva ed Emozionale',
-                    items: [
-                        { id: 'q_affective_1', entryId: 'entry.1881718847', type: 'likert', text: 'Questo brand suscita in me sentimenti ed emozioni.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_affective_1_open', entryId: 'entry.1666052944', type: 'open', text: 'Quali emozioni specifiche provi quando interagisci con questo brand?' },
-                        { id: 'q_affective_2', entryId: 'entry.1548704879', type: 'likert', text: 'Non provo forti emozioni per questo brand.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_affective_2_open', entryId: 'entry.730024869', type: 'open', text: 'Cosa pensi manchi a questo brand per evocare una connessione emotiva più forte?' },
-                        { id: 'q_affective_3', entryId: 'entry.1639414160', type: 'likert', text: 'Questo è un brand capace di suscitare emozioni.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_affective_3_open', entryId: 'entry.1453395596', type: 'open', text: 'In che modo definiresti la personalità emotiva di questo brand?' }
-                    ]
-                },
-                {
-                    dimension: 'Esperienza Comportamentale e Fisica',
-                    items: [
-                        { id: 'q_behavioral_1', entryId: 'entry.3833876', type: 'likert', text: 'Quando uso questo brand, sono portato a compiere azioni e comportamenti concreti.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_behavioral_1_open', entryId: 'entry.1837956533', type: 'open', text: 'Quali azioni o comportamenti specifici attivi quando utilizzi questo brand?' },
-                        { id: 'q_behavioral_2', entryId: 'entry.1574290924', type: 'likert', text: "Usare questo brand si traduce in un'esperienza fisica e corporea.", minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_behavioral_2_open', entryId: 'entry.513967846', type: 'open', text: "Come descriveresti l'impatto fisico di questo brand sulla tua esperienza?" },
-                        { id: 'q_behavioral_3', entryId: 'entry.2028017829', type: 'likert', text: "Questo brand non è orientato all'azione.", minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_behavioral_3_open', entryId: 'entry.925935482', type: 'open', text: "Perché percepisci questo brand come passivo o non orientato all'azione?" }
-                    ]
-                },
-                {
-                    dimension: 'Esperienza Intellettuale e Cognitiva',
-                    items: [
-                        { id: 'q_intellectual_1', entryId: 'entry.249124498', type: 'likert', text: 'Quando entro in contatto con questo brand, mi ritrovo a riflettere molto.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_intellectual_1_open', entryId: 'entry.1564521746', type: 'open', text: 'Quali sono i pensieri o i processi di ragionamento che attivi quando entri in contatto con il brand?' },
-                        { id: 'q_intellectual_2', entryId: 'entry.683413743', type: 'likert', text: 'Questo brand non stimola la mia riflessione.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_intellectual_2_open', entryId: 'entry.2005675994', type: 'open', text: 'Cosa impedisce a questo brand di stimolare la tua riflessione o il tuo interesse intellettuale?' },
-                        { id: 'q_intellectual_3', entryId: 'entry.446415555', type: 'likert', text: 'Questo brand stimola la mia curiosità e la mia capacità di risoluzione di problemi.', minLabel: 'Per nulla descrittivo', maxLabel: 'Estremamente descrittivo' },
-                        { id: 'q_intellectual_3_open', entryId: 'entry.1464639276', type: 'open', text: 'In che modo il brand ti incoraggia a esplorare o risolvere problemi?' }
-                    ]
-                },
-                {
-                    dimension: 'Note e Suggerimenti Finali',
-                    items: [
-                        { id: 'q_suggestions', entryId: 'entry.1584748032', type: 'open', text: 'Hai consigli, commenti o osservazioni finali da condividere in merito alla compilazione di questo questionario?' }
-                    ]
-                }
-            ]
-        };
-
-        const SURVEY_B = {
-            id: 'B',
+        const SURVEY_CONFIG = {
             badge: 'Studio Accademico',
             title: "Valutazione dell'Esperienza del Brand",
             actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeq7nHIOX2sdAJTnHTGtHLTaab3GcMPM-kq3_arKDd3KkSIJQ/formResponse',
@@ -413,63 +351,189 @@
                 {
                     dimension: 'Esperienza Sensoriale',
                     items: [
-                        { id: 'b_sensory_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza sensoriale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
-                        { id: 'b_sensory_1', entryId: 'entry.258881963', type: 'likert', text: 'Questo brand colpisce fortemente i miei sensi, visivi e non solo.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_sensory_2', entryId: 'entry.264609937', type: 'likert', text: 'Trovo questo brand interessante dal punto di vista sensoriale.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_sensory_3', entryId: 'entry.561885121', type: 'likert', text: 'Questo brand non stimola i miei sensi.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_sensory_open', entryId: 'entry.1650938434', type: 'open', text: "Raccontaci la tua esperienza sensoriale: descrivi come il design, i colori, i suoni o gli aspetti estetici del brand hanno influenzato le tue percezioni fisiche durante l'interazione." }
+                        { 
+                            id: 'b_sensory_intro', 
+                            type: 'group_header', 
+                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza sensoriale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" 
+                        },
+                        { 
+                            id: 'b_sensory_1', 
+                            entryId: 'entry.258881963', 
+                            type: 'likert', 
+                            text: 'Questo brand suscita una forte impressione sui miei sensi.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_sensory_2', 
+                            entryId: 'entry.264609937', 
+                            type: 'likert', 
+                            text: 'Trovo questo brand interessante dal punto di vista sensoriale.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_sensory_3', 
+                            entryId: 'entry.561885121', 
+                            type: 'likert', 
+                            text: 'Questo brand non stimola i miei sensi.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_sensory_open', 
+                            entryId: 'entry.1650938434', 
+                            type: 'open', 
+                            minWords: 20,
+                            text: "Raccontaci la tua esperienza sensoriale: descrivi come il design, i colori, i suoni, il packaging o gli aspetti estetici e fisici del brand hanno influenzato le tue percezioni durante l'interazione.",
+                            hint: "Nota: la domanda è generica e si applica a brand eterogenei; considera e approfondisci solo gli aspetti sensoriali ed estetici compatibili e pertinenti con il brand che hai scelto."
+                        }
                     ]
                 },
                 {
-                    dimension: 'Esperienza Affettiva',
+                    dimension: 'Esperienza Affettiva ed Emozionale',
                     items: [
-                        { id: 'b_affective_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza affettiva con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
-                        { id: 'b_affective_1', entryId: 'entry.1230672961', type: 'likert', text: 'Questo brand suscita in me sentimenti ed emozioni.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_affective_2', entryId: 'entry.1677398339', type: 'likert', text: 'Non provo forti emozioni per questo brand.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_affective_3', entryId: 'entry.676730096', type: 'likert', text: 'Questo brand è un brand capace di suscitare emozioni.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_affective_open', entryId: 'entry.896234847', type: 'open', text: "Raccontaci la tua esperienza affettiva: quali sentimenti, stati d'animo o emozioni specifiche associ a questo brand e come ti fanno sentire quando interagisci con esso?" }
+                        { 
+                            id: 'b_affective_intro', 
+                            type: 'group_header', 
+                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza affettiva con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" 
+                        },
+                        { 
+                            id: 'b_affective_1', 
+                            entryId: 'entry.1230672961', 
+                            type: 'likert', 
+                            text: 'Questo brand suscita in me sentimenti ed emozioni.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_affective_2', 
+                            entryId: 'entry.1677398339', 
+                            type: 'likert', 
+                            text: 'Non provo forti emozioni per questo brand.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_affective_3', 
+                            entryId: 'entry.676730096', 
+                            type: 'likert', 
+                            text: 'Questo brand è un brand emotivo.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_affective_open', 
+                            entryId: 'entry.896234847', 
+                            type: 'open', 
+                            minWords: 20,
+                            text: "Raccontaci la tua esperienza affettiva: quali sentimenti, stati d'animo o emozioni specifiche associ a questo brand e come ti fanno sentire quando entri in contatto con esso?",
+                            hint: "Nota: la domanda è generica e si applica a brand eterogenei; focalizzati sulle reazioni emotive o affettive compatibili con la tipologia di brand scelto."
+                        }
                     ]
                 },
                 {
-                    dimension: 'Esperienza Intellettuale',
+                    dimension: 'Esperienza Intellettuale e Cognitiva',
                     items: [
-                        { id: 'b_intellectual_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza intellettuale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
-                        { id: 'b_intellectual_1', entryId: 'entry.1121107633', type: 'likert', text: 'Quando entro in contatto con questo brand, mi ritrovo a riflettere molto.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_intellectual_2', entryId: 'entry.756061343', type: 'likert', text: 'Questo brand non stimola la mia riflessione.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_intellectual_3', entryId: 'entry.169116537', type: 'likert', text: 'Questo brand stimola la mia curiosità e la mia capacità di risoluzione dei problemi.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_intellectual_open', entryId: 'entry.1765560703', type: 'open', text: 'Raccontaci la tua esperienza intellettuale: in che modo questo brand stimola la tua riflessione, la tua curiosità o ti spinge ad analizzare le cose in modo nuovo o creativo?' }
+                        { 
+                            id: 'b_intellectual_intro', 
+                            type: 'group_header', 
+                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza intellettuale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" 
+                        },
+                        { 
+                            id: 'b_intellectual_1', 
+                            entryId: 'entry.1121107633', 
+                            type: 'likert', 
+                            text: 'Dedico molto pensiero quando incontro questo brand.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_intellectual_2', 
+                            entryId: 'entry.756061343', 
+                            type: 'likert', 
+                            text: 'Questo brand non mi fa riflettere.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_intellectual_3', 
+                            entryId: 'entry.169116537', 
+                            type: 'likert', 
+                            text: 'Questo brand stimola la mia curiosità e la mia capacità di risoluzione dei problemi.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_intellectual_open', 
+                            entryId: 'entry.1765560703', 
+                            type: 'open', 
+                            minWords: 20,
+                            text: "Raccontaci la tua esperienza intellettuale: in che modo questo brand stimola la tua riflessione, la tua curiosità, l'apprendimento o ti spinge ad analizzare le cose in modo nuovo o creativo?",
+                            hint: "Nota: la domanda è generica e si applica a brand eterogenei; considera gli aspetti cognitivi e riflessivi pertinenti al contesto d'uso del marchio scelto."
+                        }
                     ]
                 },
                 {
-                    dimension: 'Esperienza Comportamentale',
+                    dimension: 'Esperienza Comportamentale e Fisica',
                     items: [
-                        { id: 'b_behavioral_intro', type: 'group_header', text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza comportamentale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" },
-                        { id: 'b_behavioral_1', entryId: 'entry.312633751', type: 'likert', text: 'Quando uso questo brand, sono portato a compiere azioni e comportamenti concreti.', minLabel: "1", maxLabel: "7" },
-                        { id: 'b_behavioral_2', entryId: 'entry.479464757', type: 'likert', text: "L'uso di questo brand si traduce in un'esperienza fisica e corporea.", minLabel: "1", maxLabel: "7" },
-                        { id: 'b_behavioral_3', entryId: 'entry.1072484294', type: 'likert', text: "Questo brand non è orientato all'azione.", minLabel: "1", maxLabel: "7" },
-                        { id: 'b_behavioral_open', entryId: 'entry.287687031', type: 'open', text: 'Raccontaci la tua esperienza comportamentale: quali azioni fisiche, attività o modi di interagire concretamente ti spinge a compiere questo brand nella tua quotidianità?' }
+                        { 
+                            id: 'b_behavioral_intro', 
+                            type: 'group_header', 
+                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza comportamentale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)" 
+                        },
+                        { 
+                            id: 'b_behavioral_1', 
+                            entryId: 'entry.312633751', 
+                            type: 'likert', 
+                            text: 'Metto in atto azioni e comportamenti fisici quando uso questo brand.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_behavioral_2', 
+                            entryId: 'entry.479464757', 
+                            type: 'likert', 
+                            text: 'Questo brand comporta esperienze fisiche/corporee.', 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_behavioral_3', 
+                            entryId: 'entry.1072484294', 
+                            type: 'likert', 
+                            text: "Questo brand non è orientato all'azione.", 
+                            minLabel: "1", 
+                            maxLabel: "7" 
+                        },
+                        { 
+                            id: 'b_behavioral_open', 
+                            entryId: 'entry.287687031', 
+                            type: 'open', 
+                            minWords: 20,
+                            text: "Raccontaci la tua esperienza comportamentale: quali azioni fisiche, abitudini, attività o modi di interagire concretamente ti spinge a compiere questo brand nella tua quotidianità?",
+                            hint: "Nota: la domanda è generica e si applica a brand eterogenei; soffermati sulle azioni fisiche, pratiche o abitudini d'uso compatibili con il brand da te selezionato."
+                        }
                     ]
                 },
                 {
                     dimension: 'Note e Suggerimenti Finali',
                     items: [
-                        { id: 'b_suggestions', entryId: 'entry.1428153006', type: 'open', text: 'Hai consigli, commenti o osservazioni finali da condividere in merito alla compilazione di questo questionario?' }
+                        { 
+                            id: 'b_suggestions', 
+                            entryId: 'entry.1428153006', 
+                            type: 'open', 
+                            text: 'Hai ulteriori consigli, commenti o osservazioni da condividere in merito alla compilazione di questo questionario o alla tua esperienza complessiva?',
+                            hint: 'Facoltativo: qualsiasi feedback o considerazione libera è benvenuta.'
+                        }
                     ]
                 }
             ]
         };
 
-        let currentSurvey = null;
         let currentStepIndex = 0;
         let totalSteps = 0;
         let formDataStore = {};
-
-        // Funzione per contare le parole
-        function countWords(str) {
-            if (!str) return 0;
-            const words = str.trim().split(/\s+/);
-            return words[0] === '' ? 0 : words.length;
-        }
 
         function showToast(message, type = 'info') {
             const container = document.getElementById('toast-container');
@@ -503,19 +567,9 @@
             formDataStore = {};
             currentStepIndex = 0;
 
-            // Random allocation 50/50 per A/B Testing anonimo
-            const storedVersion = sessionStorage.getItem('assigned_survey');
-            if (storedVersion) {
-                currentSurvey = storedVersion === 'A' ? SURVEY_A : SURVEY_B;
-            } else {
-                const isA = Math.random() < 0.5;
-                currentSurvey = isA ? SURVEY_A : SURVEY_B;
-                sessionStorage.setItem('assigned_survey', currentSurvey.id);
-            }
-
             renderSteps();
 
-            totalSteps = currentSurvey.steps.length + 2; // Step 0 (Intro), Steps 1..N, Step Final
+            totalSteps = SURVEY_CONFIG.steps.length + 2; // Step 0 (Intro), Steps 1..N, Step Final
             updateProgressBar();
             showStep(0);
         }
@@ -524,7 +578,7 @@
             const container = document.getElementById('dynamic-steps-container');
             container.innerHTML = '';
 
-            currentSurvey.steps.forEach((stepData, index) => {
+            SURVEY_CONFIG.steps.forEach((stepData, index) => {
                 const stepNumber = index + 1;
                 const stepEl = document.createElement('div');
                 stepEl.id = `step-${stepNumber}`;
@@ -532,7 +586,7 @@
 
                 let itemsHTML = `
                     <div class="border-b border-white/10 pb-4">
-                        <div class="text-xs uppercase font-bold text-indigo-400 tracking-wider">Sezione ${stepNumber} di ${currentSurvey.steps.length}</div>
+                        <div class="text-xs uppercase font-bold text-indigo-400 tracking-wider">Sezione ${stepNumber} di ${SURVEY_CONFIG.steps.length}</div>
                         <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">${stepData.dimension}</h3>
                     </div>
                 `;
@@ -551,8 +605,8 @@
                                     ${item.text} <span class="text-rose-400">*</span>
                                 </label>
                                 <div class="flex items-center justify-between text-[11px] text-slate-400 font-medium px-1">
-                                    <span>${item.minLabel || '1'}</span>
-                                    <span>${item.maxLabel || '7'}</span>
+                                    <span>${item.minLabel || '1'} (Per nulla)</span>
+                                    <span>${item.maxLabel || '7'} (Totalmente)</span>
                                 </div>
                                 <div class="grid grid-cols-7 gap-1.5 sm:gap-3 pt-1">
                                     ${[1, 2, 3, 4, 5, 6, 7].map(num => `
@@ -572,12 +626,29 @@
                         itemsHTML += `
                             <div class="space-y-3 bg-slate-900/40 p-4 sm:p-5 rounded-2xl border border-white/5">
                                 <label for="${item.id}" class="block text-sm sm:text-base font-semibold text-white">
-                                    ${item.text} <span class="text-rose-400">*</span>
+                                    ${item.text}
                                 </label>
-                                <textarea id="${item.id}" name="${item.id}" rows="3" 
-                                          placeholder="Scrivi qui la tua risposta dettagliata (minimo 20 parole)..." 
-                                          class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
-                                <p class="text-xs text-slate-400">Inserisci almeno 20 parole per proseguire.</p>
+                                ${item.hint ? `
+                                    <div class="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-200/90 flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="leading-relaxed">${item.hint}</span>
+                                    </div>
+                                ` : ''}
+                                <div>
+                                    <textarea id="${item.id}" name="${item.id}" rows="3" 
+                                              oninput="updateWordCount('${item.id}', ${item.minWords || 0})"
+                                              placeholder="Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)..." 
+                                              class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
+                                    ${item.minWords ? `
+                                        <div class="flex justify-end pt-1.5 px-1">
+                                            <span id="counter-${item.id}" class="text-[11px] text-slate-500 font-normal select-none">
+                                                0/${item.minWords} parole (ne mancano ${item.minWords})
+                                            </span>
+                                        </div>
+                                    ` : ''}
+                                </div>
                             </div>
                         `;
                     }
@@ -636,27 +707,13 @@
                     if (brandInput) brandInput.focus();
                     return false;
                 }
-            } else if (currentStepIndex > 0 && currentStepIndex <= currentSurvey.steps.length) {
-                const stepData = currentSurvey.steps[currentStepIndex - 1];
+            } else if (currentStepIndex > 0 && currentStepIndex <= SURVEY_CONFIG.steps.length) {
+                const stepData = SURVEY_CONFIG.steps[currentStepIndex - 1];
                 for (let item of stepData.items) {
                     if (item.type === 'likert') {
                         const val = document.getElementById(item.id)?.value;
                         if (!val) {
                             showToast('Rispondi a tutte le domande scalari obbligatorie (*)', 'warning');
-                            return false;
-                        }
-                    } else if (item.type === 'open') {
-                        const textInput = document.getElementById(item.id);
-                        const val = textInput ? textInput.value : '';
-                        const wordCount = countWords(val);
-                        
-                        if (wordCount === 0) {
-                            showToast('La risposta aperta è obbligatoria (*)', 'warning');
-                            if (textInput) textInput.focus();
-                            return false;
-                        } else if (wordCount < 20) {
-                            showToast(`Scrivi almeno 20 parole (attualmente: ${wordCount}). Ne mancano ${20 - wordCount}.`, 'warning');
-                            if (textInput) textInput.focus();
                             return false;
                         }
                     }
@@ -692,9 +749,9 @@
             if (currentStepIndex === 0) {
                 stepCounterText.innerText = `Inizio`;
                 stepTitleText.innerText = `Introduzione & Brand`;
-            } else if (currentStepIndex <= currentSurvey.steps.length) {
-                stepCounterText.innerText = `Sezione ${currentStepIndex} di ${currentSurvey.steps.length}`;
-                stepTitleText.innerText = currentSurvey.steps[currentStepIndex - 1].dimension;
+            } else if (currentStepIndex <= SURVEY_CONFIG.steps.length) {
+                stepCounterText.innerText = `Sezione ${currentStepIndex} di ${SURVEY_CONFIG.steps.length}`;
+                stepTitleText.innerText = SURVEY_CONFIG.steps[currentStepIndex - 1].dimension;
             } else if (currentStepIndex === totalSteps - 1) {
                 stepCounterText.innerText = `Completato`;
                 stepTitleText.innerText = `Riepilogo e Invio`;
@@ -703,6 +760,14 @@
 
         function handleFormSubmit(e) {
             e.preventDefault();
+
+            // Guard anti-invio prematuro (es. pressione tasto Invio nello step 0 o intermedi)
+            if (currentStepIndex !== totalSteps - 1) {
+                if (currentStepIndex === 0) {
+                    nextStep();
+                }
+                return;
+            }
 
             const submitBtn = document.getElementById('submit-btn');
             if (submitBtn) {
@@ -717,14 +782,14 @@
             }
 
             const formData = new FormData();
-            const targetGFormUrl = currentSurvey.actionUrl;
+            const targetGFormUrl = SURVEY_CONFIG.actionUrl;
 
             // Brand Name
             const brandVal = document.getElementById('brand_name').value || '';
-            formData.append(currentSurvey.brandEntryId, brandVal);
+            formData.append(SURVEY_CONFIG.brandEntryId, brandVal);
 
             // Mapped entry.ID fields
-            currentSurvey.steps.forEach(stepData => {
+            SURVEY_CONFIG.steps.forEach(stepData => {
                 stepData.items.forEach(item => {
                     if (item.entryId) {
                         const inputEl = document.getElementById(item.id);
@@ -766,11 +831,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function updateWordCount(itemId, minWords) {
+            const textarea = document.getElementById(itemId);
+            const counter = document.getElementById(`counter-${itemId}`);
+            if (!textarea || !counter) return;
+
+            const text = textarea.value.trim();
+            const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+
+            if (minWords && minWords > 0) {
+                const remaining = Math.max(0, minWords - words);
+                if (remaining > 0) {
+                    counter.innerText = `${words}/${minWords} parole (ne mancano ${remaining})`;
+                    counter.className = "text-[11px] text-slate-500 font-normal select-none";
+                } else {
+                    counter.innerText = `${words}/${minWords} parole (minimo raggiunto)`;
+                    counter.className = "text-[11px] text-slate-400 font-normal select-none";
+                }
+            } else {
+                counter.innerText = `${words} parole`;
+                counter.className = "text-[11px] text-slate-500 font-normal select-none";
+            }
+        }
+
         function resetForm() {
             document.getElementById('survey-form').reset();
             formDataStore = {};
             document.querySelectorAll('.likert-btn').forEach(btn => btn.classList.remove('active'));
-            sessionStorage.removeItem('assigned_survey');
+            document.querySelectorAll('[id^="counter-"]').forEach(counter => {
+                const itemId = counter.id.replace('counter-', '');
+                const itemConfig = SURVEY_CONFIG.steps.flatMap(s => s.items).find(i => i.id === itemId);
+                const minWords = itemConfig?.minWords || 20;
+                counter.innerText = `0/${minWords} parole (ne mancano ${minWords})`;
+                counter.className = "text-[11px] text-slate-500 font-normal select-none";
+            });
             initSurvey();
         }
     </script>
