@@ -234,12 +234,10 @@
 
                 <p
                     class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 bg-slate-900/40 p-4 rounded-xl border border-white/5">
-                    Nelle sezioni successive troverai domande chiuse (su scala 1-7) e una domanda aperta per ciascuna dimensione. 
-                </p>
-
-                <p
-                    class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 bg-slate-900/40 p-4 rounded-xl border border-white/5">
-                    <strong class="text-slate-200">Nota:</strong> poiché il questionario è formulato in modo generale per adattarsi a brand e settori anche molto diversi tra loro, nelle risposte aperte considera e approfondisci liberamente gli aspetti più compatibili e pertinenti con il brand che hai scelto.
+                    Nei paragrafi successivi ti faremo delle domande, chiuse e aperte, per approfondire queste esperienze. Rispondi liberamente cercando di spiegarci nel dettaglio cosa hai sentito, come e perché.
+                    <span class="block mt-3">
+                        <strong class="text-slate-200">Nota:</strong> poiché il questionario è formulato in modo generale per adattarsi a brand e settori anche molto diversi tra loro, nelle risposte aperte considera e approfondisci liberamente gli aspetti più compatibili e pertinenti con il brand che hai scelto.
+                    </span>
                 </p>
 
                 <div class="space-y-3">
@@ -846,7 +844,7 @@
             if (minWords && minWords > 0) {
                 const remaining = Math.max(0, minWords - words);
                 if (remaining > 0) {
-                    counter.innerText = `${words}/${minWords} parole (ne mancano ${remaining})`;
+                    counter.innerText = `${words}/${minWords} parole`;
                     counter.className = "text-[11px] text-slate-500 font-normal select-none";
                 } else {
                     counter.innerText = `${words}/${minWords} parole (minimo raggiunto)`;
@@ -866,7 +864,7 @@
                 const itemId = counter.id.replace('counter-', '');
                 const itemConfig = SURVEY_CONFIG.steps.flatMap(s => s.items).find(i => i.id === itemId);
                 const minWords = itemConfig?.minWords || 20;
-                counter.innerText = `0/${minWords} parole (ne mancano ${minWords})`;
+                counter.innerText = `0/${minWords} parole`;
                 counter.className = "text-[11px] text-slate-500 font-normal select-none";
             });
             initSurvey();
