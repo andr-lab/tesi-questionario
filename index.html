@@ -522,6 +522,25 @@
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; soffermati sulle azioni fisiche, pratiche o abitudini d'uso compatibili con il brand da te selezionato."
                         }
                     ]
+                },
+                {
+                    dimension: 'Recensione della tua ultima esperienza',
+                    items: [
+                        {
+                            id: 'b_ood_review_intro',
+                            type: 'group_header',
+                            text: "Per concludere, pensa alla tua esperienza più recente con il brand che hai scelto."
+                        },
+                        {
+                            id: 'b_ood_review',
+                            entryId: 'entry.1428153006',
+                            type: 'open',
+                            minWords: 30,
+                            text: "Scrivi una recensione libera della tua esperienza più recente con questo brand, come se dovessi pubblicarla su un sito di recensioni o su un e-commerce. Racconta ciò che ritieni rilevante dell'esperienza con parole tue.",
+                            hint: "Non è necessario seguire uno schema o riprendere le domande precedenti: scrivi nel modo più naturale possibile.",
+                            placeholder: "Scrivi qui la tua recensione libera (almeno 30 parole)..."
+                        }
+                    ]
                 }
             ]
         };
@@ -634,7 +653,7 @@
                                 <div>
                                     <textarea id="${item.id}" name="${item.id}" rows="3" 
                                               oninput="updateWordCount('${item.id}', ${item.minWords || 0})"
-                                              placeholder="Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)..." 
+                                              placeholder="${item.placeholder || 'Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)...'}" 
                                               class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
                                     ${item.minWords ? `
                                         <div class="flex justify-end pt-1.5 px-1">
