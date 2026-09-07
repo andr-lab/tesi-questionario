@@ -166,54 +166,73 @@
     <!-- CONSENT MODAL (SOVRASTA HEADER E OGNI ALTRO ELEMENTO CON Z-[100] E BACKDROP-BLUR TOTALE) -->
     <div id="consent-modal" role="dialog" aria-modal="true" aria-labelledby="consent-modal-title"
         class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-md transition-all duration-300 opacity-100 pointer-events-auto">
-        <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col glass-card rounded-3xl border border-indigo-500/30 shadow-2xl shadow-indigo-950/50 overflow-hidden">
+        <div
+            class="relative w-full max-w-2xl max-h-[90vh] flex flex-col glass-card rounded-3xl border border-indigo-500/30 shadow-2xl shadow-indigo-950/50 overflow-hidden">
             <!-- Modal Header (Senza pulsante di chiusura) -->
             <div class="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-slate-900/60">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shrink-0">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
                         </svg>
                     </div>
                     <div>
-                        <h3 id="consent-modal-title" class="text-base sm:text-lg font-bold text-white tracking-wide">Informativa e Consenso Informato</h3>
+                        <h3 id="consent-modal-title" class="text-base sm:text-lg font-bold text-white tracking-wide">
+                            Informativa e Consenso Informato</h3>
                         <p class="text-xs text-indigo-300 font-medium">Studio Accademico sulla Brand Experience</p>
                     </div>
                 </div>
             </div>
 
             <!-- Modal Body (scrollable) -->
-            <div id="consent-section" class="p-6 sm:p-8 overflow-y-auto space-y-4 text-slate-300 text-xs sm:text-sm leading-relaxed">
+            <div id="consent-section"
+                class="p-6 sm:p-8 overflow-y-auto space-y-4 text-slate-300 text-xs sm:text-sm leading-relaxed">
                 <p>
-                    Ti invitiamo a prendere parte a uno studio accademico volto ad analizzare le risposte psicologiche, sensoriali, affettive e cognitive scaturite dall'interazione con i marchi (Brand Experience Scale, Brakus et al., 2009).
+                    Ti invitiamo a prendere parte a uno studio accademico volto ad analizzare le risposte psicologiche,
+                    sensoriali, affettive e cognitive scaturite dall'interazione con i marchi.
                 </p>
                 <div class="space-y-2 bg-slate-900/60 p-4 rounded-xl border border-white/5">
                     <p>
-                        <strong class="text-slate-100">• Anonimato e Tutela della Privacy:</strong> La ricerca è condotta nel pieno rispetto del Regolamento UE 2016/679 (GDPR). La compilazione è interamente anonima: non viene richiesto né registrato alcun dato identificativo. Le informazioni fornite saranno analizzate unicamente in forma aggregata per scopi di ricerca scientifica e redazione della tesi di laurea.
+                        <strong class="text-slate-100">• Anonimato e Tutela della Privacy:</strong> La ricerca è
+                        condotta nel pieno rispetto del Regolamento UE 2016/679 (GDPR). La compilazione è interamente
+                        anonima: non viene richiesto né registrato alcun dato identificativo. Le informazioni fornite
+                        saranno analizzate unicamente in forma aggregata per scopi di ricerca scientifica e redazione
+                        della tesi di laurea.
                     </p>
                     <p>
-                        <strong class="text-slate-100">• Partecipazione Volontaria:</strong> La partecipazione è completamente libera e facoltativa (durata stimata: circa 5-7 minuti). È possibile interrompere la compilazione in qualsiasi momento senza dover fornire spiegazioni e senza alcuna conseguenza.
+                        <strong class="text-slate-100">• Partecipazione Volontaria:</strong> La partecipazione è
+                        completamente libera e facoltativa (durata stimata: circa 5-7 minuti). È possibile interrompere
+                        la compilazione in qualsiasi momento senza dover fornire spiegazioni e senza alcuna conseguenza.
                     </p>
                 </div>
 
                 <!-- Box Informativo di Accettazione (Senza checkbox) -->
-                <div class="p-4 sm:p-5 rounded-2xl bg-indigo-950/30 border border-indigo-500/20 text-slate-300 space-y-2">
+                <div
+                    class="p-4 sm:p-5 rounded-2xl bg-indigo-950/30 border border-indigo-500/20 text-slate-300 space-y-2">
                     <div class="flex items-center gap-2 text-sm font-bold text-white">
-                        <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
                         </svg>
                         <span>Accettazione del Consenso</span>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        Procedendo con la compilazione e premendo su <strong class="text-white font-semibold">"Accetta e Procedi"</strong>, confermi di avere almeno 18 anni, dichiari di aver preso visione della presente informativa e acconsenti al trattamento anonimo e aggregato dei dati per le finalità scientifiche descritte.
+                        Procedendo con la compilazione e premendo su <strong class="text-white font-semibold">"Accetta e
+                            Procedi"</strong>, confermi di avere almeno 18 anni, dichiari di aver preso visione della
+                        presente informativa e acconsenti al trattamento anonimo e aggregato dei dati per le finalità
+                        scientifiche descritte.
                     </p>
                 </div>
             </div>
 
             <!-- Modal Footer -->
-            <div class="p-4 sm:p-6 border-t border-white/10 bg-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div
+                class="p-4 sm:p-6 border-t border-white/10 bg-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <span class="text-xs text-slate-400 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                     <span>Partecipazione anonima e volontaria</span>
@@ -222,7 +241,8 @@
                     class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition flex items-center justify-center gap-2 cursor-pointer">
                     <span id="consent-btn-text">Accetta e Procedi</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
                 </button>
             </div>
@@ -295,7 +315,8 @@
                         class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 hover:bg-slate-700/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition cursor-pointer">
                         <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
                         </svg>
                         <span>Consenso Informato</span>
                     </button>
@@ -452,13 +473,13 @@
                         {
                             id: 'b_sensory_intro',
                             type: 'group_header',
-                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza sensoriale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)"
+                            text: "Indica quanto sei d'accordo con le seguenti affermazioni riguardo all'impatto sensoriale ed estetico di questo brand (1 = Per nulla d'accordo, 7 = Totalmente d'accordo):"
                         },
                         {
                             id: 'b_sensory_1',
                             entryId: 'entry.258881963',
                             type: 'likert',
-                            text: 'Questo brand suscita una forte impressione sui miei sensi.',
+                            text: 'Questo brand ha un forte impatto sui miei sensi.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -466,7 +487,7 @@
                             id: 'b_sensory_2',
                             entryId: 'entry.264609937',
                             type: 'likert',
-                            text: 'Trovo questo brand interessante dal punto di vista sensoriale.',
+                            text: 'Trovo questo brand attraente e stimolante per i sensi.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -474,7 +495,7 @@
                             id: 'b_sensory_3',
                             entryId: 'entry.561885121',
                             type: 'likert',
-                            text: 'Questo brand non stimola i miei sensi.',
+                            text: 'Questo brand non attira né stimola i miei sensi.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -483,8 +504,8 @@
                             entryId: 'entry.1650938434',
                             type: 'open',
                             minWords: 30,
-                            text: "Raccontaci la tua esperienza sensoriale: descrivi come il design, i colori, i suoni, il packaging o gli aspetti estetici e fisici del brand hanno influenzato le tue percezioni durante l'interazione.",
-                            hint: "Nota: la domanda è generica e si applica a brand eterogenei; considera e approfondisci solo gli aspetti sensoriali ed estetici compatibili e pertinenti con il brand che hai scelto."
+                            text: "Raccontaci la tua esperienza sensoriale: descrivi come il design, i colori, i suoni, il packaging o gli aspetti estetici del brand hanno colpito la tua attenzione durante l'interazione.",
+                            hint: "Nota: la domanda è generica e si applica a brand eterogenei; considera e approfondisci liberamente gli aspetti sensoriali ed estetici compatibili e pertinenti con il brand che hai scelto."
                         }
                     ]
                 },
@@ -494,13 +515,13 @@
                         {
                             id: 'b_affective_intro',
                             type: 'group_header',
-                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza affettiva con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)"
+                            text: "Indica quanto sei d'accordo con le seguenti affermazioni riguardo all'esperienza emotiva suscitata da questo brand (1 = Per nulla d'accordo, 7 = Totalmente d'accordo):"
                         },
                         {
                             id: 'b_affective_1',
                             entryId: 'entry.1230672961',
                             type: 'likert',
-                            text: 'Questo brand suscita in me sentimenti ed emozioni.',
+                            text: "Questo brand suscita in me emozioni e stati d'animo.",
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -508,7 +529,7 @@
                             id: 'b_affective_2',
                             entryId: 'entry.1677398339',
                             type: 'likert',
-                            text: 'Non provo forti emozioni per questo brand.',
+                            text: 'Non provo emozioni particolarmente intense verso questo brand.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -516,7 +537,7 @@
                             id: 'b_affective_3',
                             entryId: 'entry.676730096',
                             type: 'likert',
-                            text: 'Questo brand è un brand emotivo.',
+                            text: 'È un brand capace di coinvolgermi sul piano emotivo.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -525,7 +546,7 @@
                             entryId: 'entry.896234847',
                             type: 'open',
                             minWords: 30,
-                            text: "Raccontaci la tua esperienza affettiva: quali sentimenti, stati d'animo o emozioni specifiche associ a questo brand e come ti fanno sentire quando entri in contatto con esso?",
+                            text: "Raccontaci la tua esperienza emotiva: quali sentimenti, stati d'animo o emozioni specifiche associ a questo brand e come ti fanno sentire quando vi entri in contatto?",
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; focalizzati sulle reazioni emotive o affettive compatibili con la tipologia di brand scelto."
                         }
                     ]
@@ -536,13 +557,13 @@
                         {
                             id: 'b_intellectual_intro',
                             type: 'group_header',
-                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza intellettuale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)"
+                            text: "Indica quanto sei d'accordo con le seguenti affermazioni riguardo a come questo brand stimola la tua mente e riflessione (1 = Per nulla d'accordo, 7 = Totalmente d'accordo):"
                         },
                         {
                             id: 'b_intellectual_1',
                             entryId: 'entry.1121107633',
                             type: 'likert',
-                            text: 'Dedico molto pensiero quando incontro questo brand.',
+                            text: 'Quando entro in contatto con questo brand mi ritrovo a riflettere molto.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -550,7 +571,7 @@
                             id: 'b_intellectual_2',
                             entryId: 'entry.756061343',
                             type: 'likert',
-                            text: 'Questo brand non mi fa riflettere.',
+                            text: 'Questo brand non stimola la mia riflessione né mi fa pensare.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -558,7 +579,7 @@
                             id: 'b_intellectual_3',
                             entryId: 'entry.169116537',
                             type: 'likert',
-                            text: 'Questo brand stimola la mia curiosità e la mia capacità di risoluzione dei problemi.',
+                            text: 'Questo brand stimola la mia curiosità e la voglia di trovare soluzioni.',
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -578,13 +599,13 @@
                         {
                             id: 'b_behavioral_intro',
                             type: 'group_header',
-                            text: "Quanto sei d'accordo con le seguenti affermazioni riguardo alla tua esperienza comportamentale con questo brand? (1 = Per nulla d'accordo, 7 = Totalmente d'accordo)"
+                            text: "Indica quanto sei d'accordo con le seguenti affermazioni riguardo alle azioni e attività pratiche legate a questo brand (1 = Per nulla d'accordo, 7 = Totalmente d'accordo):"
                         },
                         {
                             id: 'b_behavioral_1',
                             entryId: 'entry.312633751',
                             type: 'likert',
-                            text: 'Metto in atto azioni e comportamenti fisici quando uso questo brand.',
+                            text: "L'utilizzo di questo brand comporta per me attività o azioni fisiche concrete.",
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -592,7 +613,7 @@
                             id: 'b_behavioral_2',
                             entryId: 'entry.479464757',
                             type: 'likert',
-                            text: 'Questo brand comporta esperienze fisiche/corporee.',
+                            text: "Interagire con questo brand si traduce in un'esperienza fisica e corporea.",
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -600,7 +621,7 @@
                             id: 'b_behavioral_3',
                             entryId: 'entry.1072484294',
                             type: 'likert',
-                            text: "Questo brand non è orientato all'azione.",
+                            text: "Questo brand non spinge all'azione né ad attività pratiche.",
                             minLabel: "1",
                             maxLabel: "7"
                         },
@@ -609,7 +630,7 @@
                             entryId: 'entry.287687031',
                             type: 'open',
                             minWords: 30,
-                            text: "Raccontaci la tua esperienza comportamentale: quali azioni fisiche, abitudini, attività o modi di interagire concretamente ti spinge a compiere questo brand nella tua quotidianità?",
+                            text: "Raccontaci la tua esperienza pratica: quali azioni fisiche, abitudini, attività o modi concreti di interagire ti spinge a compiere questo brand nella tua quotidianità?",
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; soffermati sulle azioni fisiche, pratiche o abitudini d'uso compatibili con il brand da te selezionato."
                         }
                     ]
