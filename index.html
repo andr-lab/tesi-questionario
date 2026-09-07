@@ -163,6 +163,72 @@
     <div class="fixed pointer-events-none z-0 blob-2 rounded-full animate-pulse-slow" style="animation-delay: 3s;">
     </div>
 
+    <!-- CONSENT MODAL (SOVRASTA HEADER E OGNI ALTRO ELEMENTO CON Z-[100] E BACKDROP-BLUR TOTALE) -->
+    <div id="consent-modal" role="dialog" aria-modal="true" aria-labelledby="consent-modal-title"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-md transition-all duration-300 opacity-100 pointer-events-auto">
+        <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col glass-card rounded-3xl border border-indigo-500/30 shadow-2xl shadow-indigo-950/50 overflow-hidden">
+            <!-- Modal Header (Senza pulsante di chiusura) -->
+            <div class="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-slate-900/60">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 id="consent-modal-title" class="text-base sm:text-lg font-bold text-white tracking-wide">Informativa e Consenso Informato</h3>
+                        <p class="text-xs text-indigo-300 font-medium">Studio Accademico sulla Brand Experience</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Body (scrollable) -->
+            <div id="consent-section" class="p-6 sm:p-8 overflow-y-auto space-y-4 text-slate-300 text-xs sm:text-sm leading-relaxed">
+                <p>
+                    Ti invitiamo a prendere parte a uno studio accademico volto ad analizzare le risposte psicologiche, sensoriali, affettive e cognitive scaturite dall'interazione con i marchi (Brand Experience Scale, Brakus et al., 2009).
+                </p>
+                <div class="space-y-2 bg-slate-900/60 p-4 rounded-xl border border-white/5">
+                    <p>
+                        <strong class="text-slate-100">• Anonimato e Tutela della Privacy:</strong> La ricerca è condotta nel pieno rispetto del Regolamento UE 2016/679 (GDPR). La compilazione è interamente anonima: non viene richiesto né registrato alcun dato identificativo. Le informazioni fornite saranno analizzate unicamente in forma aggregata per scopi di ricerca scientifica e redazione della tesi di laurea.
+                    </p>
+                    <p>
+                        <strong class="text-slate-100">• Partecipazione Volontaria:</strong> La partecipazione è completamente libera e facoltativa (durata stimata: circa 5-7 minuti). È possibile interrompere la compilazione in qualsiasi momento senza dover fornire spiegazioni e senza alcuna conseguenza.
+                    </p>
+                </div>
+
+                <!-- Box Informativo di Accettazione (Senza checkbox) -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-indigo-950/30 border border-indigo-500/20 text-slate-300 space-y-2">
+                    <div class="flex items-center gap-2 text-sm font-bold text-white">
+                        <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span>Accettazione del Consenso</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Procedendo con la compilazione e premendo su <strong class="text-white font-semibold">"Accetta e Procedi"</strong>, confermi di avere almeno 18 anni, dichiari di aver preso visione della presente informativa e acconsenti al trattamento anonimo e aggregato dei dati per le finalità scientifiche descritte.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 sm:p-6 border-t border-white/10 bg-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span class="text-xs text-slate-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Partecipazione anonima e volontaria</span>
+                </span>
+                <button type="button" id="consent-action-btn" onclick="acceptConsentModal()"
+                    class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-indigo-500/25 transition flex items-center justify-center gap-2 cursor-pointer">
+                    <span id="consent-btn-text">Accetta e Procedi</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <header class="sticky top-0 z-40 glass-nav px-4 lg:px-8 py-3.5">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -210,15 +276,29 @@
         <!-- FORM CONTAINER -->
         <form id="survey-form" onsubmit="handleFormSubmit(event)" class="relative">
 
+            <!-- Campo Nascosto per Registrazione Consenso Informato Google Forms -->
+            <input type="hidden" id="consent_accepted" name="entry.1169886948" value="">
+
             <!-- STEP 0: INTRO & BRAND CHOICE -->
             <div id="step-0" class="step-panel active glass-card rounded-3xl p-6 sm:p-10">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-6">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    Studio Accademico sulla Brand Experience
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Studio Accademico sulla Brand Experience
+                    </div>
+
+                    <button type="button" onclick="openConsentModal()"
+                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 hover:bg-slate-700/80 border border-white/10 text-slate-300 hover:text-white text-xs font-medium transition cursor-pointer">
+                        <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span>Consenso Informato</span>
+                    </button>
                 </div>
 
                 <h2 id="intro-title" class="text-2xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">
@@ -291,6 +371,16 @@
                         class="text-left bg-slate-900/60 rounded-2xl p-5 border border-white/10 space-y-3 my-6">
                         <div class="text-xs uppercase font-bold text-indigo-400 tracking-wider">Riepilogo Scheda</div>
                         <div class="flex justify-between text-sm py-1 border-b border-white/5">
+                            <span class="text-slate-400">Consenso Informato:</span>
+                            <span id="summary-consent" class="text-emerald-400 font-semibold flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Accettato (Sì)</span>
+                            </span>
+                        </div>
+                        <div class="flex justify-between text-sm py-1 border-b border-white/5">
                             <span class="text-slate-400">Brand Valutato:</span>
                             <span id="summary-brand" class="text-white font-semibold">--</span>
                         </div>
@@ -354,6 +444,7 @@
             title: "Valutazione dell'Esperienza del Brand",
             actionUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeq7nHIOX2sdAJTnHTGtHLTaab3GcMPM-kq3_arKDd3KkSIJQ/formResponse',
             brandEntryId: 'entry.887139560',
+            consentEntryId: 'entry.1169886948',
             steps: [
                 {
                     dimension: 'Esperienza Sensoriale',
@@ -522,25 +613,6 @@
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; soffermati sulle azioni fisiche, pratiche o abitudini d'uso compatibili con il brand da te selezionato."
                         }
                     ]
-                },
-                {
-                    dimension: 'Recensione della tua ultima esperienza',
-                    items: [
-                        {
-                            id: 'b_ood_review_intro',
-                            type: 'group_header',
-                            text: "Per concludere, pensa alla tua esperienza più recente con il brand che hai scelto."
-                        },
-                        {
-                            id: 'b_ood_review',
-                            entryId: 'entry.1428153006',
-                            type: 'open',
-                            minWords: 30,
-                            text: "Scrivi una recensione libera della tua esperienza più recente con questo brand, come se dovessi pubblicarla su un sito di recensioni o su un e-commerce. Racconta ciò che ritieni rilevante dell'esperienza con parole tue.",
-                            hint: "Non è necessario seguire uno schema o riprendere le domande precedenti: scrivi nel modo più naturale possibile.",
-                            placeholder: "Scrivi qui la tua recensione libera (almeno 30 parole)..."
-                        }
-                    ]
                 }
             ]
         };
@@ -548,6 +620,7 @@
         let currentStepIndex = 0;
         let totalSteps = 0;
         let formDataStore = {};
+        let isConsentAccepted = false;
 
         function showToast(message, type = 'info') {
             const container = document.getElementById('toast-container');
@@ -577,6 +650,14 @@
             initSurvey();
         });
 
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (isConsentAccepted) {
+                    closeConsentModal();
+                }
+            }
+        });
+
         function initSurvey() {
             formDataStore = {};
             currentStepIndex = 0;
@@ -586,6 +667,49 @@
             totalSteps = SURVEY_CONFIG.steps.length + 2; // Step 0 (Intro), Steps 1..N, Step Final
             updateProgressBar();
             showStep(0);
+
+            // Mostra la modale di consenso informato all'apertura del sito se non ancora accettato
+            if (!isConsentAccepted) {
+                openConsentModal();
+            }
+        }
+
+        function openConsentModal() {
+            const modal = document.getElementById('consent-modal');
+            if (modal) {
+                const btnText = document.getElementById('consent-btn-text');
+                if (btnText) {
+                    btnText.innerText = isConsentAccepted ? 'Ho compreso / Torna allo studio' : 'Accetta e Procedi';
+                }
+                modal.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        function closeConsentModal() {
+            const modal = document.getElementById('consent-modal');
+            if (modal) {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        function acceptConsentModal() {
+            const wasAlreadyAccepted = isConsentAccepted;
+            isConsentAccepted = true;
+            const consentInput = document.getElementById('consent_accepted');
+            if (consentInput) {
+                consentInput.value = 'Sì';
+            }
+            closeConsentModal();
+            if (!wasAlreadyAccepted) {
+                showToast('Consenso informato registrato. Puoi iniziare il questionario.', 'success');
+            }
         }
 
         function renderSteps() {
@@ -653,7 +777,7 @@
                                 <div>
                                     <textarea id="${item.id}" name="${item.id}" rows="3" 
                                               oninput="updateWordCount('${item.id}', ${item.minWords || 0})"
-                                              placeholder="${item.placeholder || 'Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)...'}" 
+                                              placeholder="Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)..." 
                                               class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
                                     ${item.minWords ? `
                                         <div class="flex justify-end pt-1.5 px-1">
@@ -715,6 +839,12 @@
 
         function validateCurrentStep() {
             if (currentStepIndex === 0) {
+                if (!isConsentAccepted) {
+                    showToast('È necessario accettare il consenso informato per procedere.', 'error');
+                    openConsentModal();
+                    return false;
+                }
+
                 const brandInput = document.getElementById('brand_name');
                 if (!brandInput || !brandInput.value.trim()) {
                     showToast('Specificare il nome del brand prima di proseguire.', 'error');
@@ -772,7 +902,7 @@
 
             if (currentStepIndex === 0) {
                 stepCounterText.innerText = `Inizio`;
-                stepTitleText.innerText = `Introduzione & Brand`;
+                stepTitleText.innerText = `Consenso & Brand`;
             } else if (currentStepIndex <= SURVEY_CONFIG.steps.length) {
                 stepCounterText.innerText = `Sezione ${currentStepIndex} di ${SURVEY_CONFIG.steps.length}`;
                 stepTitleText.innerText = SURVEY_CONFIG.steps[currentStepIndex - 1].dimension;
@@ -811,6 +941,11 @@
             // Brand Name
             const brandVal = document.getElementById('brand_name').value || '';
             formData.append(SURVEY_CONFIG.brandEntryId, brandVal);
+
+            // Consenso Informato
+            if (isConsentAccepted || document.getElementById('consent_accepted')?.value === 'Sì') {
+                formData.append(SURVEY_CONFIG.consentEntryId, 'Sì');
+            }
 
             // Mapped entry.ID fields
             SURVEY_CONFIG.steps.forEach(stepData => {
@@ -881,6 +1016,11 @@
         function resetForm() {
             document.getElementById('survey-form').reset();
             formDataStore = {};
+            isConsentAccepted = false;
+            const consentInput = document.getElementById('consent_accepted');
+            if (consentInput) {
+                consentInput.value = '';
+            }
             document.querySelectorAll('.likert-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('[id^="counter-"]').forEach(counter => {
                 const itemId = counter.id.replace('counter-', '');
