@@ -634,6 +634,25 @@
                             hint: "Nota: la domanda è generica e si applica a brand eterogenei; soffermati sulle azioni fisiche, pratiche o abitudini d'uso compatibili con il brand da te selezionato."
                         }
                     ]
+                },
+                {
+                    dimension: 'Recensione della tua ultima esperienza',
+                    items: [
+                        {
+                            id: 'b_ood_review_intro',
+                            type: 'group_header',
+                            text: "Per concludere, pensa alla tua esperienza più recente con il brand che hai scelto."
+                        },
+                        {
+                            id: 'b_ood_review',
+                            entryId: 'entry.1428153006',
+                            type: 'open',
+                            minWords: 30,
+                            text: "Scrivi una recensione libera della tua esperienza più recente con questo brand, come se dovessi pubblicarla su un sito di recensioni o su un e-commerce. Racconta ciò che ritieni rilevante dell'esperienza con parole tue.",
+                            hint: "Non è necessario seguire uno schema o riprendere le domande precedenti: scrivi nel modo più naturale possibile.",
+                            placeholder: "Scrivi qui la tua recensione libera (almeno 30 parole)..."
+                        }
+                    ]
                 }
             ]
         };
@@ -798,12 +817,12 @@
                                 <div>
                                     <textarea id="${item.id}" name="${item.id}" rows="3" 
                                               oninput="updateWordCount('${item.id}', ${item.minWords || 0})"
-                                              placeholder="Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)..." 
+                                              placeholder="${item.placeholder || 'Scrivi qui la tua risposta dettagliata (considerando gli aspetti compatibili con il brand)...'}" 
                                               class="w-full glass-input p-4 rounded-xl text-xs sm:text-sm placeholder-slate-500 resize-y"></textarea>
                                     ${item.minWords ? `
-                                        <div class="flex justify-end pt-1.5 px-1">
-                                            <span id="counter-${item.id}" class="text-[11px] text-amber-400/90 font-medium select-none">
-                                                0/${item.minWords} parole
+                                        <div class="flex justify-end pt-1.5 px-1 min-h-[22px]">
+                                            <span id="counter-${item.id}" class="text-[11px] text-amber-400/90 font-medium select-none transition-all duration-300 transform opacity-100 scale-100">
+                                                0 / almeno ${item.minWords} parole
                                             </span>
                                         </div>
                                     ` : ''}
@@ -813,12 +832,18 @@
                     }
                 });
 
+                const hasMinWords = stepData.items.some(i => i.type === 'open' && i.minWords && i.minWords > 0);
+                const btnClass = hasMinWords
+                    ? "px-7 py-3 rounded-xl bg-slate-800 border border-white/5 text-slate-500 font-bold text-xs sm:text-sm transition flex items-center gap-2 cursor-not-allowed opacity-60"
+                    : "px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-indigo-500/20 transition flex items-center gap-2 cursor-pointer opacity-100";
+                const disabledAttr = hasMinWords ? 'disabled' : '';
+
                 itemsHTML += `
                     <div class="pt-6 border-t border-white/10 flex justify-between items-center">
                         <button type="button" onclick="prevStep()" class="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-semibold text-xs sm:text-sm border border-white/10 transition cursor-pointer">
                             Indietro
                         </button>
-                        <button type="button" onclick="nextStep()" class="px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-indigo-500/20 transition flex items-center gap-2 cursor-pointer">
+                        <button type="button" id="next-btn-step-${stepNumber}" ${disabledAttr} onclick="nextStep()" class="${btnClass}">
                             <span>Continua</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
@@ -852,6 +877,16 @@
 
             currentStepIndex = index;
             updateProgressBar();
+
+            if (index >= 1 && index <= SURVEY_CONFIG.steps.length) {
+                const stepData = SURVEY_CONFIG.steps[index - 1];
+                stepData.items.forEach(item => {
+                    if (item.type === 'open') {
+                        updateWordCount(item.id, item.minWords || 0);
+                    }
+                });
+                checkStepCompletion(index);
+            }
 
             if (index === totalSteps - 1) {
                 document.getElementById('summary-brand').innerText = document.getElementById('brand_name').value || 'Non specificato';
@@ -1011,6 +1046,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function setNextButtonState(stepNumber, enabled) {
+            const btn = document.getElementById(`next-btn-step-${stepNumber}`);
+            if (!btn) return;
+
+            btn.disabled = !enabled;
+            if (enabled) {
+                btn.classList.remove('bg-slate-800', 'border', 'border-white/5', 'text-slate-500', 'cursor-not-allowed', 'opacity-60');
+                btn.classList.add('bg-indigo-600', 'hover:bg-indigo-500', 'text-white', 'cursor-pointer', 'shadow-lg', 'shadow-indigo-500/20', 'opacity-100');
+            } else {
+                btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-500', 'text-white', 'cursor-pointer', 'shadow-lg', 'shadow-indigo-500/20', 'opacity-100');
+                btn.classList.add('bg-slate-800', 'border', 'border-white/5', 'text-slate-500', 'cursor-not-allowed', 'opacity-60');
+            }
+        }
+
+        function checkStepCompletion(stepNumber) {
+            if (stepNumber < 1 || stepNumber > SURVEY_CONFIG.steps.length) return;
+            const stepData = SURVEY_CONFIG.steps[stepNumber - 1];
+            const openItems = stepData.items.filter(i => i.type === 'open' && i.minWords && i.minWords > 0);
+
+            if (openItems.length === 0) {
+                setNextButtonState(stepNumber, true);
+                return;
+            }
+
+            const allSatisfied = openItems.every(item => {
+                const textarea = document.getElementById(item.id);
+                const text = textarea ? textarea.value.trim() : '';
+                const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+                return words >= item.minWords;
+            });
+
+            setNextButtonState(stepNumber, allSatisfied);
+        }
+
         function updateWordCount(itemId, minWords) {
             const textarea = document.getElementById(itemId);
             const counter = document.getElementById(`counter-${itemId}`);
@@ -1019,14 +1088,22 @@
             const text = textarea.value.trim();
             const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
 
+            let stepNumber = null;
+            SURVEY_CONFIG.steps.forEach((step, idx) => {
+                if (step.items.some(i => i.id === itemId)) {
+                    stepNumber = idx + 1;
+                }
+            });
+
             if (minWords && minWords > 0) {
-                const remaining = Math.max(0, minWords - words);
-                if (remaining > 0) {
-                    counter.innerText = `${words}/${minWords} parole`;
-                    counter.className = "text-[11px] text-amber-400/90 font-medium select-none";
+                if (words < minWords) {
+                    counter.innerText = `${words} / almeno ${minWords} parole`;
+                    counter.className = "text-[11px] text-amber-400/90 font-medium select-none transition-all duration-300 transform opacity-100 scale-100";
+                    if (stepNumber) setNextButtonState(stepNumber, false);
                 } else {
-                    counter.innerText = `${words}/${minWords} parole ✓`;
-                    counter.className = "text-[11px] text-emerald-400 font-semibold select-none";
+                    counter.innerText = `${words} / almeno ${minWords} parole ✓`;
+                    counter.className = "text-[11px] text-emerald-400 font-semibold select-none transition-all duration-300 transform opacity-0 scale-95 pointer-events-none";
+                    if (stepNumber) checkStepCompletion(stepNumber);
                 }
             } else {
                 counter.innerText = `${words} parole`;
@@ -1047,9 +1124,12 @@
                 const itemId = counter.id.replace('counter-', '');
                 const itemConfig = SURVEY_CONFIG.steps.flatMap(s => s.items).find(i => i.id === itemId);
                 const minWords = itemConfig?.minWords || 30;
-                counter.innerText = `0/${minWords} parole`;
-                counter.className = "text-[11px] text-amber-400/90 font-medium select-none";
+                counter.innerText = `0 / almeno ${minWords} parole`;
+                counter.className = "text-[11px] text-amber-400/90 font-medium select-none transition-all duration-300 transform opacity-100 scale-100";
             });
+            for (let i = 1; i <= SURVEY_CONFIG.steps.length; i++) {
+                checkStepCompletion(i);
+            }
             initSurvey();
         }
     </script>
