@@ -437,10 +437,37 @@
                     </svg>
                 </div>
                 <h2 class="text-3xl font-extrabold text-white mb-3">Grazie per il tuo contributo!</h2>
-                <p class="text-slate-300 max-w-lg mx-auto text-sm sm:text-base mb-8">
+                <p class="text-slate-300 max-w-lg mx-auto text-sm sm:text-base mb-6">
                     Le tue risposte sono state registrate con successo e contribuiranno in modo fondamentale alla
                     ricerca sulla percezione della Brand Experience.
                 </p>
+                <!-- SurveySwap.io Completion Box -->
+                <div class="bg-slate-900/70 border border-indigo-500/30 rounded-2xl p-5 sm:p-6 max-w-lg mx-auto my-6 text-left space-y-4 shadow-xl shadow-indigo-950/30">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">Partecipanti da SurveySwap.io</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        The following code gives you Karma that can be used to get free research participants at <span class="text-white font-medium">SurveySwap.io</span>.
+                    </p>
+                    <a href="https://surveyswap.io/sr/8PN6-RMDJ-QG4L" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 transition-all text-center cursor-pointer">
+                        <span>Go to: https://surveyswap.io/sr/8PN6-RMDJ-QG4L</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                    <div class="flex items-center justify-between gap-2 p-3 rounded-xl bg-slate-950/60 border border-white/10">
+                        <div class="text-xs text-slate-400">
+                            <span>Or enter the code manually: </span>
+                            <code id="surveyswap-code" class="text-indigo-300 font-mono font-bold text-sm ml-1 select-all">8PN6-RMDJ-QG4L</code>
+                        </div>
+                        <button type="button" onclick="navigator.clipboard.writeText('8PN6-RMDJ-QG4L'); showToast('Codice SurveySwap copiato!', 'success')"
+                            class="text-xs px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 transition font-medium cursor-pointer">
+                            Copia
+                        </button>
+                    </div>
+                </div>
                 <div class="pt-2">
                     <button type="button" onclick="resetForm()"
                         class="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition cursor-pointer">
